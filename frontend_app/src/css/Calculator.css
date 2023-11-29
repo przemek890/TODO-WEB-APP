@@ -1,0 +1,50 @@
+.calculator {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff;
+}
+
+.title {
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+.calculator form {
+    margin-bottom: 20px;
+}
+
+.calculator input {
+    text-align: right;
+    width: 180px;
+    height: 30px;
+    color: #333333;
+    border: none;
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #6d6a6a
+;
+}
+
+.clear, .btn.operator, .equal {
+    background-color: #ff9500;
+}
+
+.btn.zero {
+    width: 90px;
+    grid-column: span 2;
+}
