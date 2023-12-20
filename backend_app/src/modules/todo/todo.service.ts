@@ -3,14 +3,16 @@ import { CreateTodoDto } from './dto/create-todo.dto';
 import {PrismaService} from "../prisma/prisma.service";
 import {EditTodoDto} from "./dto/edit-todo.dto";
 import {TodoFilterDto} from "./dto/todo-filter.dto";
+import {UserID} from "../auth/user.decorator";
 
 @Injectable()
 export class TodoService {
   constructor(private readonly  prisma: PrismaService) {}
-  async listTodo(filter: TodoFilterDto) {
+  async listTodo(filter: TodoFilterDto,userId: number) {
     return this.prisma.todo.findMany({
       where: {
         done: filter.isDone,
+        userId: userId, // <-------------- mod
       },
       orderBy: {
         [filter.sortBy]: filter.sortOrder,
@@ -18,12 +20,13 @@ export class TodoService {
     });
   }
 
-  async addTodo(data: CreateTodoDto) {
+  async addTodo(data: CreateTodoDto, userid: number) {
     return this.prisma.todo.create({
       data: {
         title: data.title,
         content: data.content,
         done: data.done,
+        userId: userid,
       }
     });
   }
