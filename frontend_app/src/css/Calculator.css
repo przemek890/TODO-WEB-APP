@@ -4,11 +4,11 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #ffffff;
+    background-color: #1a1b1e;
 }
 
 .title {
-    color: #333333;
+    color: #ffffff;
     margin-bottom: 20px;
 }
 
@@ -20,8 +20,8 @@
     text-align: right;
     width: 180px;
     height: 30px;
-    color: #333333;
     border: none;
+    color: #ffffff
 }
 
 .keypad {
@@ -36,7 +36,7 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    color: #6d6a6a
+    color: #ffffff
 ;
 }
 

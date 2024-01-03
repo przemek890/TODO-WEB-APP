@@ -2,13 +2,18 @@ import {TodoFormValues} from "../../types/TodoFormValues";
 import {useTodoForm} from "./hooks/useTodoForm";
 import {Button,Checkbox,Group,Paper,Stack,Textarea,TextInput} from "@mantine/core";
 import React from 'react';
+import {createTodo} from "./api/create-todo";
 
 
 export const TodoForm = () => {
     const form = useTodoForm();
 
-    const handleSubmit = (vals: TodoFormValues) => {
-        console.log(vals);
+    const handleSubmit = async (vals: TodoFormValues) => {
+        try {
+            await createTodo(vals);
+        } catch {
+            alert("Blad przy dodawaniu todo")
+        }
     }
 
     return (
@@ -30,7 +35,6 @@ export const TodoForm = () => {
                         label="Done"
                         {...form.getInputProps("done",{type:'checkbox'})}
                     />
-
                     <Group justify="flex-end" mt="md">
                         <Button type="submit">Sent</Button>
                     </Group>
