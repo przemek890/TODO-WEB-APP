@@ -3,14 +3,17 @@ import {useTodoForm} from "./hooks/useTodoForm";
 import {Button,Checkbox,Group,Paper,Stack,Textarea,TextInput} from "@mantine/core";
 import React from 'react';
 import {createTodo} from "./api/create-todo";
+import {useNavigate} from "react-router-dom";
 
 
 export const TodoForm = () => {
     const form = useTodoForm();
+    const navigate = useNavigate();
 
     const handleSubmit = async (vals: TodoFormValues) => {
         try {
             await createTodo(vals);
+            navigate('/todo');
         } catch {
             alert("Blad przy dodawaniu todo")
         }
