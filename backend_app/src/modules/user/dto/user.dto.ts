@@ -7,6 +7,10 @@ export class UserDto implements User {
 
     @Exclude()
     createdAt: Date;
+
     id: number;
     email: string;
+
+    @Exclude()
+    calculatorHistoryId: number;
 }

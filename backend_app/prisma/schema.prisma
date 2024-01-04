@@ -20,12 +20,22 @@ model Todo {
   userId    Int
 }
 
-model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  password  String
-  createdAt DateTime @default(now())
-  todos     Todo[]
+model CalculatorHistory {
+  id      Int    @id @default(autoincrement())
+  history String
+  User    User   @relation(fields: [userId], references: [id])
+  userId  Int    @unique
 }
 
-// npx prisma ....
+model User {
+  id                  Int                @id @default(autoincrement())
+  email               String             @unique
+  password            String
+  createdAt           DateTime           @default(now())
+  todos               Todo[]
+  CalculatorHistory   CalculatorHistory?
+  calculatorHistoryId Int                @default(0)
+}
+
+// Każde Todo jest powiązane z jednym User -> wiele-do-jednego
+// Każdy User może mieć co najżwyżej jedną historię Kalkulatora (ostatni wynik)

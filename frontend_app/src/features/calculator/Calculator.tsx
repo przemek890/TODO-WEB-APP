@@ -1,21 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../css/Calculator.css';
+import {createCal} from "./api/create-cal";
+import {listTodo} from "../todo/api/todo";
+import {listcal} from "./api/cal";
 
 export const Calculator = () => {
     const [result, setResult] = useState("");
+    const [history, setHistory] = useState("");
+
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setResult(result.concat((event.target as HTMLButtonElement).name));
     }
+
     const clear = () => {
         setResult("");
     }
-    const calculate = () => {
+
+    const calculate = async () => {
         try {
-            setResult(eval(result).toString());
+
+            const calculationResult = eval(result).toString();
+            setResult(calculationResult);
+
+            // Tworzenie obiektu z danymi do wysłania
+            const data = {history: calculationResult.toString()};
+
+            // Wysyłanie danych do serwera
+            await createCal(data);
+
+            // Pobieranie historii obliczeń z serwera
+            const calHistory = await listcal();
+            setHistory(calHistory.history);
         } catch(error) {
-            setResult("Błąd");
+            alert("Błąd :(");
         }
     }
+
     const calculatePercentage = () => {
         try {
             setResult((eval(result) / 100).toString());
@@ -37,7 +57,6 @@ export const Calculator = () => {
             <form>
                 <input type="text" value={result} />
             </form>
-
             <div className="keypad">
                 <button className="btn clear" onClick={clear}>AC</button>
                 <button className="btn operator" name="+/-" onClick={changeSign}>+/-</button>
@@ -58,6 +77,9 @@ export const Calculator = () => {
                 <button className="btn zero" name="0" onClick={handleClick}>0</button>
                 <button className="btn" name="." onClick={handleClick}>.</button>
                 <button className="btn equal" onClick={calculate}>=</button>
+            </div>
+            <div style={{marginTop: "20px"}} className="history">
+                Last Result: {history}
             </div>
         </div>
     );

@@ -6,3 +6,10 @@ export class TodoNotfoundException extends NotFoundException {
         super('Todo not found');
     }
 }
+
+export class CalNotfoundException extends NotFoundException {
+
+    constructor() {
+        super('not found');
+    }
+}
