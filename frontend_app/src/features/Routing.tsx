@@ -12,7 +12,7 @@ import {useIsLogged} from "../hooks/useIsLogged";
 
 const publicRoutes: RouteObject[] = [
     {
-        path: '/',
+        // path: '/',
         children: [
             {
                 path: '/login',

@@ -16,9 +16,17 @@ export const Calculator = () => {
         setResult("");
     }
 
+    useEffect(() => {
+        const fetchHistory = async () => {
+            const calHistory = await listcal();
+            setHistory(calHistory.history);
+        }
+
+        fetchHistory();
+    }, []);
+
     const calculate = async () => {
         try {
-
             const calculationResult = eval(result).toString();
             setResult(calculationResult);
 
@@ -35,6 +43,7 @@ export const Calculator = () => {
             alert("Błąd :(");
         }
     }
+
 
     const calculatePercentage = () => {
         try {

@@ -31,6 +31,7 @@ export const LoginPage: FC = () => {
 
     return (
         <div style={{width: '100%'}}>
+            <h1>Witamy na stronie logowania</h1>
             <form onSubmit={form.onSubmit(values => handleSubmit(values))}>
                 <Stack gap = "md">
                     <TextInput required type="email" label="Email" {...form.getInputProps('email')}/>
@@ -40,4 +41,5 @@ export const LoginPage: FC = () => {
             </form>
         </div>
     );
+
 };
