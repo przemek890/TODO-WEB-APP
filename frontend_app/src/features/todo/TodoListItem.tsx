@@ -1,13 +1,26 @@
-import React, {CSSProperties, FC, memo, useState} from 'react';
+import React, {CSSProperties, FC, memo, useEffect, useState} from 'react';
 import {TodoType} from "../../types/TodoType";
 import {Badge, Card, Group, Image, Text, Checkbox} from "@mantine/core";
+import {CategoryType} from "../../types/CatType";
+import {listCategories} from "./api/categories";
 
 interface TodoListItemProps {
     item: TodoType;
 }
 
+type TodoTyping = {
+    "todoId": number,
+    "categoryId": number
+};
+
 export const TodoListItem : FC<TodoListItemProps> = memo(({item}) => {
     const [checked, setChecked] = useState(false);
+
+    // Pobranie kategorii
+    const [allCategories, setAllCategories] = useState<CategoryType[]>([]);
+    useEffect(() => {
+        listCategories().then(setAllCategories);
+    }, []);
 
     const style: CSSProperties | undefined = checked ? {border: "2px solid", borderColor: "rgba(63,63,63,0.72)"} : undefined;
 
@@ -29,6 +42,26 @@ export const TodoListItem : FC<TodoListItemProps> = memo(({item}) => {
             <Text mt="xs" size="sm" c="dimmed">
                 {item.content}
             </Text>
+
+            <Text mt="xs" size="sm" c="dimmed">
+                Kategorie: {allCategories && item.categories && item.categories.length > 0 ? (() => {
+                let categoryNames = [];
+                for (let i = 0; i < item.categories.length; i++) {
+                    const categoryId = (item.categories[i] as unknown as TodoTyping).categoryId;
+                    const category = allCategories.find(cat => cat.id === categoryId);
+                    if (category) {
+                        categoryNames.push(category.name);
+                    }
+                }
+                return categoryNames.join(', ');
+            })() : ''}
+            </Text>
+
+
+
+
+
+
         </Card>
     );
 });

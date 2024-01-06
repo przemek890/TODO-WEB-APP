@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {useForm} from "@mantine/form";
-import {Button,Stack,TextInput} from "@mantine/core";
+import {Button,Stack,TextInput,Image} from "@mantine/core";
 import {loginErrorNotification} from "./notifications";
 import {login} from "./api/login";
 import {useNavigate} from "react-router-dom";
@@ -30,15 +30,17 @@ export const LoginPage: FC = () => {
 
 
     return (
-        <div style={{width: '100%'}}>
-            <h1>TODO LIST LOGIN PAGE</h1>
-            <form onSubmit={form.onSubmit(values => handleSubmit(values))}>
-                <Stack gap = "md">
-                    <TextInput required type="email" label="Email" {...form.getInputProps('email')}/>
-                    <TextInput required type="password" label="Password" {...form.getInputProps('password')}/>
-                    <Button type="submit">Login</Button>
-                </Stack>
-            </form>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vh' }}>
+            <div style={{ width: '50%' }}>
+                <h1 style={{ textAlign: 'center' }}>TODO LIST LOGIN PAGE</h1>
+                <form onSubmit={form.onSubmit(values => handleSubmit(values))}>
+                    <Stack gap = "md">
+                        <TextInput required type="email" label="Email" {...form.getInputProps('email')}/>
+                        <TextInput required type="password" label="Password" {...form.getInputProps('password')}/>
+                        <Button type="submit">Login</Button>
+                    </Stack>
+                </form>
+            </div>
         </div>
     );
 

@@ -11,13 +11,29 @@ datasource db {
 }
 
 model Todo {
-  id        Int      @id @default(autoincrement())
-  title     String
-  content   String
-  done      Boolean  @default(false)
-  createdAt DateTime @default(now())
-  user      User     @relation(fields: [userId], references: [id])
-  userId    Int
+  id         Int              @id @default(autoincrement())
+  title      String
+  content    String
+  done       Boolean          @default(false)
+  createdAt  DateTime         @default(now())
+  user       User             @relation(fields: [userId], references: [id])
+  userId     Int
+  categories CategoryOnTodo[]
+}
+
+model Category {
+  id    Int              @id @default(autoincrement())
+  name  String
+  todos CategoryOnTodo[]
+}
+
+model CategoryOnTodo {
+  todoId     Int
+  categoryId Int
+  todo       Todo     @relation(fields: [todoId], references: [id])
+  category   Category @relation(fields: [categoryId], references: [id])
+
+  @@id([todoId, categoryId])
 }
 
 model CalculatorHistory {
@@ -39,3 +55,4 @@ model User {
 
 // Każde Todo jest powiązane z jednym User -> wiele-do-jednego
 // Każdy User może mieć co najżwyżej jedną historię Kalkulatora (ostatni wynik)
+// Każde Todo jest powiązane z wieloma kategoriami za pomocą tabeli pośredniej CategoryOnTodo

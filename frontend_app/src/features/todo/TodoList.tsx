@@ -6,7 +6,7 @@ import {listTodo} from "./api/todo";
 
 
 export const TodoList = () => {
-    const [data,setData] = useState<TodoType[]>([]);
+    const [data, setData] = useState<TodoType[]>([]);
 
     useEffect(() => {
         listTodo().then((response) => setData(response));
