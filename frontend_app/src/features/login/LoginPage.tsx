@@ -1,7 +1,6 @@
 import React, {FC} from 'react';
 import {useForm} from "@mantine/form";
-import {Button,Stack,TextInput,Image} from "@mantine/core";
-import {loginErrorNotification} from "./notifications";
+import {Button,Stack,TextInput} from "@mantine/core";
 import {login} from "./api/login";
 import {useNavigate} from "react-router-dom";
 

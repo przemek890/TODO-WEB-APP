@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import '../../css/Calculator.css';
 import {createCal} from "./api/create-cal";
-import {listTodo} from "../todo/api/todo";
 import {listcal} from "./api/cal";
 
 export const Calculator = () => {
     const [result, setResult] = useState("");
     const [history, setHistory] = useState("");
+
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setResult(result.concat((event.target as HTMLButtonElement).name));

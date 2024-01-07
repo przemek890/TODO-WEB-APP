@@ -4,6 +4,5 @@ import {API_URL} from "../../../config";
 import ky from "ky";
 
 export const createTodo = async (data: TodoFormValues)=> {
-    console.log(data)
     return ky.post(`${API_URL}/todo`,{json: data,credentials: "include"}).json<TodoType>();
 }

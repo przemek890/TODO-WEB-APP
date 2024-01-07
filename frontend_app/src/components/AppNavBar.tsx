@@ -22,7 +22,7 @@ export const AppNavBar = () => {
 
     return (
         <div>
-            <NavLink onClick={() => navigate("/todo")} label="TODO LIST" leftSection={<IconListCheck size="1rem" stroke={1.5} />} />
+            <NavLink onClick={() => navigate("/todo")} label="TODO LISTS" leftSection={<IconListCheck size="1rem" stroke={1.5} />} />
             <NavLink onClick={() => navigate("/todo/new")} label="Add" leftSection={<IconPlus size="1rem" stroke={1.5} />} />
             <NavLink onClick={() => navigate("/todo/calculator")} label="Calculator" leftSection={<IconCalculator size="1rem" stroke={1.5} />} />
             <NavLink onClick={handleLogout} label="Wyloguj" leftSection={<IconDoorExit size="1rem" stroke={1.5} />} />

@@ -26,6 +26,27 @@ const publicRoutes: RouteObject[] = [
     }
 ]
 
+const adminRoutes: RouteObject[] = [
+    {
+        path: '/',
+        element: <Layout/>,
+        children: [
+            {
+                path: "/todo",
+                element: <TodoList/>,
+            },
+            {
+                path: '/todo/new',
+                element: <TodoForm/>,
+            },
+            {
+                path: '*',
+                element: <ErrorPage/>,
+            }
+        ]
+    }
+]
+
 const privateroutes: RouteObject[] = [
     {
         path: '/',
@@ -55,6 +76,7 @@ const privateroutes: RouteObject[] = [
         ]
     }
 ]
+
 
 export const Rounting = () => {
     const isLogged = useIsLogged();

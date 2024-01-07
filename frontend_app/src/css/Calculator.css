@@ -4,11 +4,9 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #1a1b1e;
 }
 
 .title {
-    color: #ffffff;
     margin-bottom: 20px;
 }
 
@@ -20,8 +18,7 @@
     text-align: right;
     width: 180px;
     height: 30px;
-    border: none;
-    color: #ffffff
+    border: 1px solid #000000;
 }
 
 .keypad {
@@ -36,12 +33,10 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    color: #ffffff
 ;
 }
 
 .clear, .btn.operator, .equal {
-    background-color: #ff9500;
 }
 
 .btn.zero {

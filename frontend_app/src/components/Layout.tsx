@@ -3,8 +3,8 @@ import {AppNavBar} from "./AppNavBar";
 import {AppShell, Burger, Group, Text} from "@mantine/core";
 import React from "react";
 import {useDisclosure} from "@mantine/hooks";
+import {ColorSchemeComponent} from "./ColorSchema";
 
-// Layout.tsx
 export const Layout = () => {
     const [opened, { toggle }] = useDisclosure();
     return (
@@ -16,7 +16,8 @@ export const Layout = () => {
             <AppShell.Header>
                 <Group h="100%" px="md">
                     <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
-                    <Text size="xl">TODO APP</Text> {/* Dodajemy tytuł strony */}
+                    <Text fw={700} size="xl">TODO APP</Text>
+                    <ColorSchemeComponent />
                 </Group>
             </AppShell.Header>
             <AppShell.Navbar p="md">
