@@ -10,12 +10,37 @@ import { Group } from "@mantine/core";
 import {UserTypeForm} from "../../types/UserTypeForm";
 import {deleteUser} from "./api/deleteUser";
 import {emailType} from "../../types/Email";
+import {deleteCategory} from "./api/deleteCategory";
+
+
 
 const AdminPage: React.FC = () => {
     const navigate = useNavigate();
 
-    const form_user = useForm<UserTypeForm>();
-    const form_category = useForm<CategoryTypeForm>();
+    const form_user = useForm<UserTypeForm>({
+        initialValues: {
+            email: '',
+            password: ''
+        },
+    });
+
+    const form_category = useForm<CategoryTypeForm>({
+        initialValues: {
+            name: ''
+        },
+    });
+
+    const form_email = useForm<emailType>({
+        initialValues: {
+            email: ''
+        },
+    });
+
+    const form_category_del = useForm<CategoryTypeForm>({
+        initialValues: {
+            name: ''
+        },
+    });
 
     const handleUserSubmit = async (vals: UserTypeForm) => {
         try {
@@ -38,9 +63,18 @@ const AdminPage: React.FC = () => {
     const DeleteUserSubmit = async  (vals: emailType) => {
         try {
             await deleteUser(vals);
-            navigate("/todo/new");
+            navigate("/todo");
         } catch {
             alert("Error deleting user - please enter correct details")
+        }
+    };
+
+    const DeleteCategorySubmit = async  (vals: CategoryTypeForm) => {
+        try {
+            await deleteCategory(vals);
+            navigate("/todo");
+        } catch {
+            alert("Error deleting category - please enter correct details")
         }
     };
 
@@ -94,16 +128,35 @@ const AdminPage: React.FC = () => {
 
             <Paper shadow="xs" p="xl">
                 <h3>Delete user:</h3>
-                <form onSubmit={form_user.onSubmit(DeleteUserSubmit)}>
+                <form onSubmit={form_email.onSubmit(DeleteUserSubmit)}>
                     <Stack gap={"lg"}>
                         <TextInput
                             withAsterisk
                             label="email"
                             placeholder="Delete user"
-                            {...form_user.getInputProps("email")}
+                            {...form_email.getInputProps("email")}
                         />
                         <Group mt="md">
                             <Button type="submit">Delete User</Button>
+                        </Group>
+                    </Stack>
+                </form>
+            </Paper>
+
+            <Space h="lg" />
+
+            <Paper shadow="xs" p="xl">
+                <h3>Delete category:</h3>
+                <form onSubmit={form_category_del.onSubmit(DeleteCategorySubmit)}>
+                    <Stack gap={"lg"}>
+                        <TextInput
+                            withAsterisk
+                            label="Category Name"
+                            placeholder="Delete Category"
+                            {...form_category_del.getInputProps("name")}
+                        />
+                        <Group mt="md">
+                            <Button type="submit">Delete Category</Button>
                         </Group>
                     </Stack>
                 </form>

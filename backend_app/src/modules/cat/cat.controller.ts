@@ -21,11 +21,12 @@ export class CatController {
         return this.catService.addCat(data);
     }
 
-    @Delete(':categoryId')
+    @Delete(':category')
     @HttpCode(HttpStatus.NO_CONTENT)
     @UseGuards(TokenGuard)
-    async delete_Calls(@Param('categoryId') categoryId: number) {
-        await this.catService.deleteCategory(categoryId)
+    async delete_Cat(@Param('category') category: string) {
+        const cat = await this.catService.findOne(category);
+        await this.catService.deleteCategory(cat.id)
     }
 
 

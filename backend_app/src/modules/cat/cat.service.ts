@@ -18,6 +18,13 @@ export class CatService {
         });
     }
 
+    async findOne(cat: string) {
+        return this.prisma.category.findUnique( {
+            where: {
+                name: cat,
+            },
+        });
+    }
 
     async deleteCategory(id: number) {
         return this.prisma.category.delete({

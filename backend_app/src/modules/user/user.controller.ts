@@ -38,7 +38,6 @@ export class UserController {
     @HttpCode(HttpStatus.NO_CONTENT)
     @UseGuards(TokenGuard)
     async deleteUser(@Param('email') email: string) {
-        console.log(email)
         const user = await this.userService.findOne2(email);
         if (!user) throw new UserNotfoundException();
         await this.userService.deleteUser(user.id);
