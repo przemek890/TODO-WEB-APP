@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {useForm} from "@mantine/form";
 import {Button,Stack,TextInput} from "@mantine/core";
-import {login} from "./api/login";
+import { useLogin } from "./api/login";
 import {useNavigate} from "react-router-dom";
 
 type LoginFormType = {
@@ -11,6 +11,7 @@ type LoginFormType = {
 
 export const LoginPage: FC = () => {
     const navigate = useNavigate();
+    const login = useLogin();
     const form = useForm<LoginFormType>({
         initialValues: {
             email: '',

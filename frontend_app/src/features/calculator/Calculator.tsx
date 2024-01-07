@@ -64,7 +64,7 @@ export const Calculator = () => {
         <div className="calculator">
             <h1 className="title">Calculator</h1>
             <form>
-                <input type="text" value={result} />
+                <input type="text" value={result} onChange={e => setResult(e.target.value)} />
             </form>
             <div className="keypad">
                 <button className="btn clear" onClick={clear}>AC</button>

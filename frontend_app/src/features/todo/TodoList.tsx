@@ -32,7 +32,7 @@ export const TodoList = () => {
         <div style={{width: '100%'}}>
             <div style={{ display: 'flex', marginBottom: '20px' }}>
                 <Checkbox onClick={sortData} style={{ marginRight: '8px' }}/>
-                <div>Sort {isAscending ? 'alphabetically' : 'not alphabetically'}</div>
+                <div>Sort {'alphabetically'}</div>
                 <Checkbox
                     checked={showCompleted}
                     onChange={() => setShowCompleted(!showCompleted)}

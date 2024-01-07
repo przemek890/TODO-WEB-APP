@@ -47,7 +47,7 @@ const adminRoutes: RouteObject[] = [
     }
 ]
 
-const privateroutes: RouteObject[] = [
+const PrivateRoutes: RouteObject[] = [
     {
         path: '/',
         element: <Layout/>,
@@ -78,8 +78,8 @@ const privateroutes: RouteObject[] = [
 ]
 
 
-export const Rounting = () => {
+export const Routing = () => {
     const isLogged = useIsLogged();
-    const routes = isLogged ? privateroutes : publicRoutes;
+    const routes = isLogged ? PrivateRoutes : publicRoutes;
     return useRoutes(routes);
 }

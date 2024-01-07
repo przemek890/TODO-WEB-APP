@@ -44,9 +44,8 @@ export const TodoForm = () => {
 
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
                         {categories.map((category, index) => (
-                            <div style={{ marginRight: '25px' }}>
+                            <div key={category.id} style={{ marginRight: '25px' }}> {/* Przenieś klucz `key` tutaj */}
                                 <Checkbox
-                                    key={category.id}
                                     label={category.name}
                                     checked={form.values.categories.includes(category.id)}
                                     onChange={() => {
@@ -61,7 +60,6 @@ export const TodoForm = () => {
                             </div>
                         ))}
                     </div>
-
 
                     <Space/>
                     <Checkbox

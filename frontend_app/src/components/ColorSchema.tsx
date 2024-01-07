@@ -1,6 +1,6 @@
-import { Notification, Paper, Switch, useMantineColorScheme } from '@mantine/core';
+import {Paper, Switch, useMantineColorScheme } from '@mantine/core';
 
-export function ColorSchemeComponent() {
+export const ColorSchemeComponent = () => {
     const { colorScheme, setColorScheme } = useMantineColorScheme();
 
     const handleColorSchemeChange = () => {

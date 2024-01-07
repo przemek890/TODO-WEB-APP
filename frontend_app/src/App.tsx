@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { Rounting } from './features/Routing';
+import { Routing } from './features/Routing';
 import '@mantine/core/styles.css';
 import { MantineProvider, createTheme, Notification, Paper, Switch, useMantineColorScheme } from '@mantine/core';
 
@@ -26,7 +26,7 @@ function ColorSchemeComponent() {
         <div>
             <Notification/>
             <BrowserRouter>
-                <Rounting/>
+                <Routing/>
             </BrowserRouter>
             <div style={{ position: 'absolute', top: 0, right: 0, padding: '1rem' }}>
                 <Paper>
