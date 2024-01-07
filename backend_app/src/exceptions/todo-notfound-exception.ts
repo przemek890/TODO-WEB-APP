@@ -13,3 +13,17 @@ export class CalNotfoundException extends NotFoundException {
         super('not found');
     }
 }
+
+export class CatNotfoundException extends NotFoundException {
+
+    constructor() {
+        super('not found');
+    }
+}
+
+export class UserNotfoundException extends NotFoundException {
+
+    constructor() {
+        super('not found');
+    }
+}

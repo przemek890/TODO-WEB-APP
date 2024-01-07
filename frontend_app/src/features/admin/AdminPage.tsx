@@ -8,9 +8,12 @@ import { UserType } from "../../types/UserType";
 import { createUser } from "./api/addUser";
 import { Group } from "@mantine/core";
 import {UserTypeForm} from "../../types/UserTypeForm";
+import {deleteUser} from "./api/deleteUser";
+import {emailType} from "../../types/Email";
 
 const AdminPage: React.FC = () => {
     const navigate = useNavigate();
+
     const form_user = useForm<UserTypeForm>();
     const form_category = useForm<CategoryTypeForm>();
 
@@ -32,6 +35,15 @@ const AdminPage: React.FC = () => {
         }
     };
 
+    const DeleteUserSubmit = async  (vals: emailType) => {
+        try {
+            await deleteUser(vals);
+            navigate("/todo/new");
+        } catch {
+            alert("Error deleting user - please enter correct details")
+        }
+    };
+
     return (
         <div style={{ maxWidth: '600px', margin: '0 auto', marginLeft: '0' }}>
             <h2 style={{ marginTop: '-20px'}}>ADMIN BASEMENT</h2>
@@ -41,7 +53,7 @@ const AdminPage: React.FC = () => {
                     <Stack gap={"lg"}>
                         <TextInput
                             withAsterisk
-                            label="Username"
+                            label="Email"
                             placeholder="Add User"
                             {...form_user.getInputProps("email")}
                         />
@@ -73,6 +85,25 @@ const AdminPage: React.FC = () => {
                         />
                         <Group mt="md">
                             <Button type="submit">Add Category</Button>
+                        </Group>
+                    </Stack>
+                </form>
+            </Paper>
+
+            <Space h="lg" />
+
+            <Paper shadow="xs" p="xl">
+                <h3>Delete user:</h3>
+                <form onSubmit={form_user.onSubmit(DeleteUserSubmit)}>
+                    <Stack gap={"lg"}>
+                        <TextInput
+                            withAsterisk
+                            label="email"
+                            placeholder="Delete user"
+                            {...form_user.getInputProps("email")}
+                        />
+                        <Group mt="md">
+                            <Button type="submit">Delete User</Button>
                         </Group>
                     </Stack>
                 </form>

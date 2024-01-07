@@ -52,7 +52,7 @@ export class TodoController {
   @UseGuards(TokenGuard)
   async deleteTodo(@Param('id') id: number, @UserID() userId: number) {
     const todo = await this.todoService.get(id)
-    if (!todo || todo.userId !== userId) throw new TodoNotfoundException(); // <-------------- mod
+    if (!todo || todo.userId !== userId) throw new TodoNotfoundException();
    await this.todoService.deleteTodo(id)
   }
 

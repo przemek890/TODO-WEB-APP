@@ -26,11 +26,28 @@ export class UserService {
         }
     }
 
-    async findOne(userId: number) {
+    async findOne(ID: number) {
         return this.prisma.user.findUnique( {
             where: {
-                id: userId,
+                id: ID,
             },
         });
     }
+
+    async findOne2(email: string) {
+        return this.prisma.user.findUnique( {
+            where: {
+                email: email,
+            },
+        });
+    }
+
+    deleteUser(id: number){
+        return this.prisma.user.delete({
+            where: {
+                id: id,
+            }
+        })
+    }
+
 }
