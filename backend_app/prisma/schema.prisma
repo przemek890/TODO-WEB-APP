@@ -44,13 +44,12 @@ model CalculatorHistory {
 }
 
 model User {
-  id                  Int                @id @default(autoincrement())
-  email               String             @unique
-  password            String
-  createdAt           DateTime           @default(now())
-  todos               Todo[]
-  CalculatorHistory   CalculatorHistory?
-  calculatorHistoryId Int                @default(0)
+  id                Int                @id @default(autoincrement())
+  email             String             @unique
+  password          String
+  createdAt         DateTime           @default(now())
+  todos             Todo[]
+  CalculatorHistory CalculatorHistory?
 }
 
 // Każde Todo jest powiązane z jednym User -> wiele-do-jednego
