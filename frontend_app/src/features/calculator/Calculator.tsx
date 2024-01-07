@@ -61,8 +61,8 @@ export const Calculator = () => {
     }
 
     return (
-        <div className="calculator">
-            <h1 className="title">Calculator</h1>
+        <div className="calculator" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <h2 style={{ marginTop: '-20px'}}>CALCULATOR</h2>
             <form>
                 <input type="text" value={result} onChange={e => setResult(e.target.value)} />
             </form>
@@ -88,7 +88,7 @@ export const Calculator = () => {
                 <button className="btn equal" onClick={calculate}>=</button>
             </div>
             <div style={{marginTop: "20px"}} className="history">
-                Last Result: {history}
+                <h3>Last Result: {history}</h3>
             </div>
         </div>
     );

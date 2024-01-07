@@ -36,7 +36,7 @@ export const AppNavBar = () => {
         if (isAdmin) {
             navigate("/admin");
         } else {
-            alert("Brak uprawnień");
+            alert("No permissions - this incident will be reported XD");
         }
     }
 

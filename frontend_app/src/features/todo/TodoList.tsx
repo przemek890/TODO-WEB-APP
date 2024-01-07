@@ -30,6 +30,7 @@ export const TodoList = () => {
 
     return (
         <div style={{width: '100%'}}>
+            <h2 style={{ display: 'flex', marginTop: '-20px' }}>TODOS</h2>
             <div style={{ display: 'flex', marginBottom: '20px' }}>
                 <Checkbox onClick={sortData} style={{ marginRight: '8px' }}/>
                 <div>Sort {'alphabetically'}</div>

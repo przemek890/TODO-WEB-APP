@@ -1,4 +1,4 @@
-export type CategoryType = {
+export type CategoryTypeForm = {
     id?: number;
     name: string;
 }

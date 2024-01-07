@@ -29,6 +29,7 @@ export const TodoForm = () => {
 
     return (
         <Paper shadow="xs" p="xl">
+            <h2 style={{ display: 'flex', marginTop: '-20px' }}>ADD TODO</h2>
             <form onSubmit={form.onSubmit(handleSubmit)}>
                 <Stack gap={"lg"}>
                     <TextInput
