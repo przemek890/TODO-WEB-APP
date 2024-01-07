@@ -1,6 +1,5 @@
 import { API_URL } from "../../../config";
 
-
 export const useLogin = () => {
 
     const login = async (username: string, password: string) => {
@@ -14,8 +13,8 @@ export const useLogin = () => {
         });
 
         if (response.status !== 200) throw new Error('Login failed');
+
         return await response.text();
     }
-
     return login;
 }

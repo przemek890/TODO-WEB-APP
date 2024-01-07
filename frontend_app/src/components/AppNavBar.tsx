@@ -1,14 +1,14 @@
-import {IconCalculator, IconDoorExit, IconListCheck, IconPlus} from "@tabler/icons-react";
-import React from "react";
+import {IconCalculator, IconDoorExit, IconListCheck, IconPlus, IconUser} from "@tabler/icons-react";
+import React, {useEffect, useState} from "react";
 import {NavLink} from "@mantine/core";
 import {NavigateFunction, useNavigate} from "react-router-dom";
 import {logout} from "../features/login/api/logout";
+import {getMe} from "../features/login/api/getMe";
 
 
-
-// AppNavBar.tsx
 export const AppNavBar = () => {
     const navigate : NavigateFunction = useNavigate();
+    const [userEmail, setUserEmail] = useState('');
 
     const handleLogout = async () => {
         try {
@@ -20,17 +20,38 @@ export const AppNavBar = () => {
         }
     }
 
+    useEffect(() => {
+        const fetchUser = async () => {
+            const user = await getMe();
+            if ('email' in user) {
+                setUserEmail(user.email);
+            }
+        };
+        fetchUser();
+    }, []);
+
+    const isAdmin = userEmail === 'admin@example.com';
+
+    const handleAdminClick = () => {
+        if (isAdmin) {
+            navigate("/admin");
+        } else {
+            alert("Brak uprawnień");
+        }
+    }
+
     return (
         <div>
             <NavLink onClick={() => navigate("/todo")} label="TODO LISTS" leftSection={<IconListCheck size="1rem" stroke={1.5} />} />
             <NavLink onClick={() => navigate("/todo/new")} label="Add" leftSection={<IconPlus size="1rem" stroke={1.5} />} />
             <NavLink onClick={() => navigate("/todo/calculator")} label="Calculator" leftSection={<IconCalculator size="1rem" stroke={1.5} />} />
+            <NavLink onClick={handleAdminClick} label="Admin" leftSection={<IconUser size="1rem" stroke={1.5} />} />
             <NavLink onClick={handleLogout} label="Wyloguj" leftSection={<IconDoorExit size="1rem" stroke={1.5} />} />
         </div>
     )
 }
 
-
 {/*<NavLink className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} to={'/todo'}>Lista TODO</NavLink> |*/}
 {/*<NavLink className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} to={'/todo/new'}>Dodaj</NavLink> |*/}
 {/*<NavLink className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} to={'/todo/calculator'}>Kalkulator</NavLink>*/}
+

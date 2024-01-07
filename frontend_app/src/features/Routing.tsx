@@ -9,6 +9,8 @@ import {ErrorPage} from "./error/ErrorPage";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import {LoginPage} from "./login/LoginPage";
 import {useIsLogged} from "../hooks/useIsLogged";
+import AdminPage from "./admin/AdminPage";
+
 
 const publicRoutes: RouteObject[] = [
     {
@@ -21,27 +23,6 @@ const publicRoutes: RouteObject[] = [
             {
                 path: '*',
                 element: <Navigate to="/login" replace/>
-            }
-        ]
-    }
-]
-
-const adminRoutes: RouteObject[] = [
-    {
-        path: '/',
-        element: <Layout/>,
-        children: [
-            {
-                path: "/todo",
-                element: <TodoList/>,
-            },
-            {
-                path: '/todo/new',
-                element: <TodoForm/>,
-            },
-            {
-                path: '*',
-                element: <ErrorPage/>,
             }
         ]
     }
@@ -61,18 +42,21 @@ const PrivateRoutes: RouteObject[] = [
                 element: <TodoForm/>,
             },
             {
-                path: 'todo/:id',
+                path: '/todo/:id',
                 element: <TodoForm/>,
             },
             {
-                path: 'todo/calculator',
+                path: '/todo/calculator',
                 element: <Calculator/>,
+            },
+            {
+                path: '/admin',
+                element: <AdminPage/>,
             },
             {
                 path: '*',
                 element: <ErrorPage/>,
             }
-
         ]
     }
 ]
