@@ -1,4 +1,12 @@
-import {IconCalculator, IconDoorExit, IconListCheck, IconPlus, IconUser} from "@tabler/icons-react";
+import {
+    IconCalculator,
+    IconCross,
+    IconDoorExit,
+    IconListCheck,
+    IconPlus,
+    IconSkull,
+    IconUser
+} from "@tabler/icons-react";
 import React, {useEffect, useState} from "react";
 import {NavLink} from "@mantine/core";
 import {NavigateFunction, useNavigate} from "react-router-dom";
@@ -46,6 +54,7 @@ export const AppNavBar = () => {
             <NavLink onClick={() => navigate("/todo/new")} label="Add" leftSection={<IconPlus size="1rem" stroke={1.5} />} />
             <NavLink onClick={() => navigate("/todo/calculator")} label="Calculator" leftSection={<IconCalculator size="1rem" stroke={1.5} />} />
             <NavLink onClick={handleAdminClick} label="Admin" leftSection={<IconUser size="1rem" stroke={1.5} />} />
+            <NavLink onClick={() => navigate("/todo/delete")} label="Delete" leftSection={<IconSkull size="1rem" stroke={1.5} />} />
             <NavLink onClick={handleLogout} label="Wyloguj" leftSection={<IconDoorExit size="1rem" stroke={1.5} />} />
         </div>
     )

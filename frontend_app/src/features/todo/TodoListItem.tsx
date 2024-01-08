@@ -35,7 +35,7 @@ export const TodoListItem : FC<TodoListItemProps> = memo(({item}) => {
             </Card.Section>
 
             <Group justify="space-between" mt="md" mb="xs">
-                <Text fw={500}>{item.title}</Text>
+                <Text fw={500}>{item.id}) {item.title}</Text>
                 <Checkbox checked={checked} onChange={(e) => setChecked(e.currentTarget.checked)} />
             </Group>
 

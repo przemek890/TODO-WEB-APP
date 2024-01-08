@@ -83,13 +83,19 @@ export class TodoService {
 
 
 
-  deleteTodo(id: number){
-    return this.prisma.todo.delete({
+  async deleteTodo(todoId: number){
+    await this.prisma.categoryOnTodo.deleteMany({
       where: {
-        id: id,
+        todoId: todoId
       }
-    })
+    });
+
+    return this.prisma.todo.delete({
+      where: { id: todoId }
+    });
   }
+
+
 
   get(id: number) {
     return this.prisma.todo.findUnique({

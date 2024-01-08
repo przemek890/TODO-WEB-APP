@@ -10,6 +10,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import {LoginPage} from "./login/LoginPage";
 import {useIsLogged} from "../hooks/useIsLogged";
 import AdminPage from "./admin/AdminPage";
+import DeleteTodoPage from "./DeleteTodo/DeleteTodoPage";
+import React from "react";
 
 
 const publicRoutes: RouteObject[] = [
@@ -52,6 +54,10 @@ const PrivateRoutes: RouteObject[] = [
             {
                 path: '/admin',
                 element: <AdminPage/>,
+            },
+            {
+                path: '/todo/delete',
+                element: <DeleteTodoPage/>,
             },
             {
                 path: '*',
