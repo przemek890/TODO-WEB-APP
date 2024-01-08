@@ -41,6 +41,7 @@ const AdminPage: React.FC = () => {
             name: ''
         },
     });
+    //////////////////////////////////////////////////////////////////////////////////////    //////////////////////////////////////////////////////////////////////////////////////
 
     const handleUserSubmit = async (vals: UserTypeForm) => {
         try {
@@ -78,9 +79,12 @@ const AdminPage: React.FC = () => {
         }
     };
 
+    //////////////////////////////////////////////////////////////////////////////////////    //////////////////////////////////////////////////////////////////////////////////////
+
     return (
         <div style={{ maxWidth: '600px', margin: '0 auto', marginLeft: '0' }}>
             <h2 style={{ marginTop: '-20px'}}>ADMIN BASEMENT</h2>
+
             <Paper shadow="xs" p="xl">
                 <h3>Add User:</h3>
                 <form onSubmit={form_user.onSubmit(handleUserSubmit)}>
@@ -108,6 +112,25 @@ const AdminPage: React.FC = () => {
             <Space h="lg" />
 
             <Paper shadow="xs" p="xl">
+                <h3>Delete user:</h3>
+                <form onSubmit={form_email.onSubmit(DeleteUserSubmit)}>
+                    <Stack gap={"lg"}>
+                        <TextInput
+                            withAsterisk
+                            label="Email"
+                            placeholder="Delete user"
+                            {...form_email.getInputProps("email")}
+                        />
+                        <Group mt="md">
+                            <Button type="submit">Delete User</Button>
+                        </Group>
+                    </Stack>
+                </form>
+            </Paper>
+
+            <Space h="lg" />
+
+            <Paper shadow="xs" p="xl">
                 <h3>Add Category:</h3>
                 <form onSubmit={form_category.onSubmit(handleCategorySubmit)}>
                     <Stack gap={"lg"}>
@@ -119,25 +142,6 @@ const AdminPage: React.FC = () => {
                         />
                         <Group mt="md">
                             <Button type="submit">Add Category</Button>
-                        </Group>
-                    </Stack>
-                </form>
-            </Paper>
-
-            <Space h="lg" />
-
-            <Paper shadow="xs" p="xl">
-                <h3>Delete user:</h3>
-                <form onSubmit={form_email.onSubmit(DeleteUserSubmit)}>
-                    <Stack gap={"lg"}>
-                        <TextInput
-                            withAsterisk
-                            label="email"
-                            placeholder="Delete user"
-                            {...form_email.getInputProps("email")}
-                        />
-                        <Group mt="md">
-                            <Button type="submit">Delete User</Button>
                         </Group>
                     </Stack>
                 </form>

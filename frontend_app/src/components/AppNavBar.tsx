@@ -12,6 +12,13 @@ import {NavLink} from "@mantine/core";
 import {NavigateFunction, useNavigate} from "react-router-dom";
 import {logout} from "../features/login/api/logout";
 import {getMe} from "../features/login/api/getMe";
+import fs from 'fs';
+import path from 'path';
+import {TodoFormValues} from "../types/TodoFormValues";
+import ky from "ky";
+import {API_URL} from "../config";
+import {TodoType} from "../types/TodoType";
+import {createincident} from "../features/apiIncident";
 
 
 export const AppNavBar = () => {
@@ -40,21 +47,31 @@ export const AppNavBar = () => {
 
     const isAdmin = userEmail === 'admin@example.com';
 
-    const handleAdminClick = () => {
+
+
+
+    const handleAdminClick = async () => {
         if (isAdmin) {
             navigate("/admin");
         } else {
-            alert("No permissions - this incident will be reported XD");
+            alert("No permissions - this incident will be reported");
+            await createincident(
+                {
+                    email: userEmail,
+                    description: "No access to the resource"
+                }
+            );
         }
     }
+
 
     return (
         <div>
             <NavLink onClick={() => navigate("/todo")} label="TODO LISTS" leftSection={<IconListCheck size="1rem" stroke={1.5} />} />
             <NavLink onClick={() => navigate("/todo/new")} label="Add" leftSection={<IconPlus size="1rem" stroke={1.5} />} />
+            <NavLink onClick={() => navigate("/todo/delete")} label="Delete" leftSection={<IconSkull size="1rem" stroke={1.5} />} />
             <NavLink onClick={() => navigate("/todo/calculator")} label="Calculator" leftSection={<IconCalculator size="1rem" stroke={1.5} />} />
             <NavLink onClick={handleAdminClick} label="Admin" leftSection={<IconUser size="1rem" stroke={1.5} />} />
-            <NavLink onClick={() => navigate("/todo/delete")} label="Delete" leftSection={<IconSkull size="1rem" stroke={1.5} />} />
             <NavLink onClick={handleLogout} label="Wyloguj" leftSection={<IconDoorExit size="1rem" stroke={1.5} />} />
         </div>
     )

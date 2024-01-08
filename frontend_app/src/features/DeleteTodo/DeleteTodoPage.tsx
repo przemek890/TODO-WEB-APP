@@ -31,7 +31,7 @@ const DeleteTodoPage: React.FC = () => {
 
     return (
         <div style={{ maxWidth: '600px', margin: '0 auto', marginLeft: '0' }}>
-            <h2 style={{ marginTop: '-20px'}}>Delete your todo</h2>
+            <h2 style={{ marginTop: '-20px'}}>DELETE TODO</h2>
             <Paper shadow="xs" p="xl">
                 <h3>Delete todo:</h3>
                 <form onSubmit={form_todo.onSubmit(handleTodoDelete)}>

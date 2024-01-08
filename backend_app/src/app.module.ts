@@ -9,9 +9,10 @@ import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
 import {CalModule} from "./modules/cal/cal.module";
 import {CatModule} from "./modules/cat/cat.module";
+import {IncModule} from "./modules/incidents/inc.module";
 
 @Module({
-  imports: [ConfigModule.forRoot({isGlobal: true}),TodoModule, PrismaModule, TokenModule, UserModule, AuthModule,CalModule,CatModule],
+  imports: [ConfigModule.forRoot({isGlobal: true}),TodoModule, PrismaModule, TokenModule, UserModule, AuthModule,CalModule,CatModule,IncModule],
   controllers: [AppController],
   providers: [AppService],
 })

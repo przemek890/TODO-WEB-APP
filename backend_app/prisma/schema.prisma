@@ -52,6 +52,13 @@ model User {
   CalculatorHistory CalculatorHistory?
 }
 
+model Incident {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  email       String
+  description String
+}
+
 // Każde Todo jest powiązane z jednym User -> wiele-do-jednego
 // Każdy User może mieć co najżwyżej jedną historię Kalkulatora (ostatni wynik)
 // Każde Todo jest powiązane z wieloma kategoriami za pomocą tabeli pośredniej CategoryOnTodo
