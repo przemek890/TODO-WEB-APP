@@ -56,12 +56,6 @@ export const TodoListItem : FC<TodoListItemProps> = memo(({item}) => {
                 return categoryNames.join(', ');
             })() : ''}
             </Text>
-
-
-
-
-
-
         </Card>
     );
 });

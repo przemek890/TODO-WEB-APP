@@ -108,4 +108,15 @@ export class TodoService {
     })
   }
 
+  get_s(title: string) {
+    return this.prisma.todo.findMany({
+      where: {
+        title: title
+      },
+      include: {
+        categories: true,
+      },
+    })
+  }
+
 }

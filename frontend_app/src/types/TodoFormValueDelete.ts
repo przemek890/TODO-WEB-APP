@@ -1,3 +1,3 @@
 export type TodoFormValuesDelete = {
-    id: string;
+    title: string;
 }

@@ -15,7 +15,7 @@ const DeleteTodoPage: React.FC = () => {
 
     const form_todo = useForm<TodoFormValuesDelete>({
         initialValues: {
-            id: '',
+            title: '',
         },
     });
 
@@ -38,10 +38,10 @@ const DeleteTodoPage: React.FC = () => {
                     <Stack gap={"lg"}>
                         <TextInput
                             withAsterisk
-                            label="id"
-                            name="id"
+                            label="title"
+                            name="title"
                             placeholder="Delete todo"
-                            {...form_todo.getInputProps("id")}
+                            {...form_todo.getInputProps("title")}
                         />
                         <Group mt="md">
                             <Button type="submit">Delete Todo</Button>

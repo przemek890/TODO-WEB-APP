@@ -34,7 +34,11 @@ describe('Testy dla użytkownika przemek@example.com', () => {
         cy.url().should('include', '/todo')
 
         cy.visit('http://localhost:3000/todo/delete')
-        cy.get('input[name="id"]').type('11')
+        cy.get('input[name="title"]').type("Testowe zadanie")
+        cy.get('button[type="submit"]').click()
+
+        cy.url().should('include', '/todo')
+
         cy.visit('http://localhost:3000/api/auth/logout')
     })
 

@@ -47,13 +47,13 @@ export class TodoController {
   }
 
 
-  @Delete(':id')
+  @Delete(':title')
   @HttpCode(HttpStatus.NO_CONTENT)
   @UseGuards(TokenGuard)
-  async deleteTodo(@Param('id') id: number, @UserID() userId: number) {
-    const todo = await this.todoService.get(id)
-    if (!todo || todo.userId !== userId) throw new TodoNotfoundException();
-   await this.todoService.deleteTodo(id)
+  async deleteTodo(@Param('title') title: string, @UserID() userId: number) {
+    const todo = await this.todoService.get_s(title)
+    if (!todo || todo[0].userId !== userId) throw new TodoNotfoundException();
+   await this.todoService.deleteTodo(todo[0].id)
   }
 
   @Put(':id')
