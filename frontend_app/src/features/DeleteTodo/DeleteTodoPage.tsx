@@ -38,7 +38,8 @@ const DeleteTodoPage: React.FC = () => {
                     <Stack gap={"lg"}>
                         <TextInput
                             withAsterisk
-                            label="Id"
+                            label="id"
+                            name="id"
                             placeholder="Delete todo"
                             {...form_todo.getInputProps("id")}
                         />

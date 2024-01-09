@@ -1,9 +1,9 @@
-describe('Login Failed', () => {
+describe('Błędne dane podczas logowania', () => {
     beforeEach(() => {
         cy.visit('http://localhost:3000')
     })
 
-    it('attempts to log in with non-existent user and expects 403', () => {
+    it('Wprowadz nieistniejace dane i oczekuj 403 FORBIDDEN', () => {
         cy.get('input[type="email"]').clear().type('notexist@example.com')
         cy.get('input[type="password"]').clear().type('notexist123')
         cy.get('button[type="submit"]').click()

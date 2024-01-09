@@ -34,19 +34,26 @@ export const TodoForm = () => {
                 <Stack gap={"lg"}>
                     <TextInput
                         withAsterisk
-                        label="Title"
+                        label="title"
+                        name="title"
                         placeholder="Title todo"
                         {...form.getInputProps("title")}
                     />
 
-                    <Textarea withAsterisk label="Content"
-                              placeholder="Content todo" {...form.getInputProps("content")}>
-                    </Textarea>
+                    <TextInput
+                        withAsterisk
+                        label="content"
+                        name="content"
+                        placeholder="Content todo"
+                        {...form.getInputProps("content")}
+                    />
 
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
                         {categories.map((category, index) => (
-                            <div key={category.id} style={{ marginRight: '25px' }}> {/* Przenieś klucz `key` tutaj */}
+                            <div key={category.id} style={{ marginRight: '25px' }}>
                                 <Checkbox
+                                    data-testid={`category-checkbox-${category.id}`}
+                                    className="category-checkbox"
                                     label={category.name}
                                     checked={form.values.categories.includes(category.id)}
                                     onChange={() => {
@@ -64,7 +71,8 @@ export const TodoForm = () => {
 
                     <Space/>
                     <Checkbox
-                        label="Done"
+                        label="done"
+                        name="done"
                         {...form.getInputProps("done",{type:'checkbox'})}
                     />
                     <Group justify="flex-end" mt="md">

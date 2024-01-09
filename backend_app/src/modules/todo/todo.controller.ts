@@ -40,6 +40,7 @@ export class TodoController {
 
 
   @Post()
+  @HttpCode(HttpStatus.CREATED)
   @UseGuards(TokenGuard)
   addTodo(@Body() data: CreateTodoDto,@UserID() userid: number) {
     return this.todoService.addTodo(data,userid);

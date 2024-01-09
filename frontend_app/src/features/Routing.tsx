@@ -61,7 +61,7 @@ const PrivateRoutes: RouteObject[] = [
             },
             {
                 path: '*',
-                element: <ErrorPage/>,
+                element: <Navigate to="/login" replace/>
             }
         ]
     }
