@@ -9,7 +9,7 @@ export class IncController {
 
     @Post()
     @UseGuards(TokenGuard)
-    @HttpCode(HttpStatus.FORBIDDEN)
+    @HttpCode(HttpStatus.OK)
     async add_inc(@Body() data: CreateIncidentDto) {
         return this.incService.addincident(data);
     }

@@ -14,7 +14,7 @@ describe('Testy dla użytkownika przemek@example.com', () => {
         });
     });
 
-    it('/api/user/me - otrzymaj 200 OK', () => {
+    it('/api/user/me - dostań informacje z serwera o sobie i otrzymaj 200 OK', () => {
         cy.request({
             method: 'GET',
             url: 'http://localhost:9000/api/user/me',
@@ -26,24 +26,7 @@ describe('Testy dla użytkownika przemek@example.com', () => {
         });
     });
 
-    it('/api/inc - otrzymaj 403 FORBIDDEN', () => {
-        cy.request({
-            method: 'POST',
-            url: 'http://localhost:9000/api/inc',
-            headers: {
-                Cookie: cookies
-            },
-            body: {
-                email: 'test@example.com',
-                description: 'test'
-            },
-            failOnStatusCode: false
-        }).then((response) => {
-            expect(response.status).to.eq(403);
-        });
-    });
-
-    it('/api/todo - otrzymaj 201 OK', () => {
+    it('/api/todo - utworz todo i otrzymaj 201 OK', () => {
         cy.request({
             method: 'POST',
             url: 'http://localhost:9000/api/todo',
@@ -61,7 +44,7 @@ describe('Testy dla użytkownika przemek@example.com', () => {
         });
     });
 
-    it('/api/todo - otrzymaj 200 OK', () => {
+    it('/api/todo - wylistuj todo i otrzymaj 200 OK', () => {
         cy.request({
             method: 'GET',
             url: 'http://localhost:9000/api/todo',
@@ -73,17 +56,15 @@ describe('Testy dla użytkownika przemek@example.com', () => {
         });
     });
 
-    it('/api/todo/Testttttttttt - otrzymaj 204 No content', () => {
+    it('/api/todo/Testttttttttt - usun todo i otrzymaj 204 No content', () => {
         cy.request({
             method: 'DELETE',
             url: 'http://localhost:9000/api/todo/Testttttttttt',
             headers: {
                 Cookie: cookies
             },
-            failOnStatusCode: false
         }).then((response) => {
             expect(response.status).to.eq(204);
         });
     });
-
 });

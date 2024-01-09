@@ -15,7 +15,7 @@ describe('Testy dla użytkownika admin@example.com', () => {
         });
     });
 
-    it('/api/user - otrzymaj 201 CREATED', () => {
+    it('/api/user - utwórz nowego użytkownika i otrzymaj 201 CREATED', () => {
         cy.request({
             method: 'POST',
             url: 'http://localhost:9000/api/user',
@@ -33,7 +33,7 @@ describe('Testy dla użytkownika admin@example.com', () => {
     });
 
 
-    it('/api/user/test@example.com - otrzymaj 204 No content', () => {
+    it('/api/user/test@example.com - usuń użytkownika i otrzymaj 204 No content', () => {
         cy.request({
             method: 'DELETE',
             url: 'http://localhost:9000/api/user/test@example.com',
@@ -45,7 +45,7 @@ describe('Testy dla użytkownika admin@example.com', () => {
         });
     });
 
-    it('/api/cat - otrzymaj 201 CREATED', () => {
+    it('/api/cat - utworz kategorie i otrzymaj 201 CREATED', () => {
         cy.request({
             method: 'POST',
             url: 'http://localhost:9000/api/cat',
@@ -60,7 +60,7 @@ describe('Testy dla użytkownika admin@example.com', () => {
         });
     });
 
-    it('/api/cat - otrzymaj 200 OK', () => {
+    it('/api/cat - dostań kategorie i otrzymaj 200 OK', () => {
         cy.request({
             method: 'GET',
             url: 'http://localhost:9000/api/cat',
@@ -72,7 +72,7 @@ describe('Testy dla użytkownika admin@example.com', () => {
         });
     });
 
-    it('/api/cat/urgent - otrzymaj 204 No content', () => {
+    it('/api/cat/urgent - usn kategorie i otrzymaj 204 No content', () => {
         cy.request({
             method: 'DELETE',
             url: 'http://localhost:9000/api/cat/test_category',
@@ -81,6 +81,22 @@ describe('Testy dla użytkownika admin@example.com', () => {
             }
         }).then((response) => {
             expect(response.status).to.eq(204);
+        });
+    });
+
+    it('/api/inc - Utworz incydent i otrzymaj 200 OK', () => {
+        cy.request({
+            method: 'POST',
+            url: 'http://localhost:9000/api/inc',
+            headers: {
+                Cookie: cookies
+            },
+            body: {
+                email: 'test@example.com',
+                description: 'test'
+            },
+        }).then((response) => {
+            expect(response.status).to.eq(200);
         });
     });
 });
