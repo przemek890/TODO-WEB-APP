@@ -92,18 +92,20 @@ const AdminPage: React.FC = () => {
                         <TextInput
                             withAsterisk
                             label="Email"
+                            name="email1"
                             placeholder="Add User"
                             {...form_user.getInputProps("email")}
                         />
                         <TextInput
                             withAsterisk
                             label="Password"
+                            name="password1"
                             placeholder="Add Password"
                             type="password"
                             {...form_user.getInputProps("password")}
                         />
                         <Group mt="md">
-                            <Button type="submit">Add User</Button>
+                            <Button type="submit" name="button1">Add User</Button>
                         </Group>
                     </Stack>
                 </form>
@@ -117,11 +119,12 @@ const AdminPage: React.FC = () => {
                         <TextInput
                             withAsterisk
                             label="Email"
+                            name="email2"
                             placeholder="Delete user"
                             {...form_email.getInputProps("email")}
                         />
                         <Group mt="md">
-                            <Button type="submit">Delete User</Button>
+                            <Button type="submit" name="button2" >Delete User</Button>
                         </Group>
                     </Stack>
                 </form>
@@ -135,11 +138,12 @@ const AdminPage: React.FC = () => {
                         <TextInput
                             withAsterisk
                             label="Category Name"
+                            name="name3"
                             placeholder="Add Category"
                             {...form_category.getInputProps("name")}
                         />
                         <Group mt="md">
-                            <Button type="submit">Add Category</Button>
+                            <Button type="submit" name="button3" >Add Category</Button>
                         </Group>
                     </Stack>
                 </form>
@@ -152,12 +156,13 @@ const AdminPage: React.FC = () => {
                     <Stack gap={"lg"}>
                         <TextInput
                             withAsterisk
+                            name="name4"
                             label="Category Name"
                             placeholder="Delete Category"
                             {...form_category_del.getInputProps("name")}
                         />
                         <Group mt="md">
-                            <Button type="submit">Delete Category</Button>
+                            <Button type="submit" name="button4" >Delete Category</Button>
                         </Group>
                     </Stack>
                 </form>

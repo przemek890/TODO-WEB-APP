@@ -10,7 +10,7 @@ export const ColorSchemeComponent = () => {
     return (
         <div style={{ position: 'absolute', top: 0, right: 0, padding: '1rem' }}>
             <Paper>
-                <Switch
+                <Switch name="switch"
                     checked={colorScheme === "dark"}
                     onChange={handleColorSchemeChange}
                     label={colorScheme === "dark" ? "Dark mode" : "Light mode"}

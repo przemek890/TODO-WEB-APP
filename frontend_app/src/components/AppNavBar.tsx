@@ -48,21 +48,35 @@ export const AppNavBar = () => {
     const isAdmin = userEmail === 'admin@example.com';
 
 
-
-
     const handleAdminClick = async () => {
-        if (isAdmin) {
-            navigate("/admin");
-        } else {
-            alert("No permissions - this incident will be reported");
-            await createincident(
-                {
-                    email: userEmail,
-                    description: "No access to the resource"
-                }
-            );
+        try {
+            if (isAdmin) {
+                navigate("/admin");
+            }
+            else {
+                alert("No permissions - this incident will be reported");
+                await createincident(
+                    {
+                        email: userEmail,
+                        description: "No access to the resource"
+                    }
+                );
+            }
+        } catch (error) {
+            if (error instanceof Error && error.message === '403') {
+                alert("No permissions - this incident will be reported");
+                await createincident(
+                    {
+                        email: userEmail,
+                        description: "No access to the resource"
+                    }
+                );
+            }
         }
     }
+
+
+
 
 
     return (
