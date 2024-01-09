@@ -25,9 +25,8 @@ export class CatController {
     @HttpCode(HttpStatus.NO_CONTENT)
     @UseGuards(TokenGuard)
     async delete_Cat(@Param('category') category: string) {
+        console.log(category)
         const cat = await this.catService.findOne(category);
         await this.catService.deleteCategory(cat.id)
     }
-
-
 }

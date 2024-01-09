@@ -83,7 +83,7 @@ const AdminPage: React.FC = () => {
 
     return (
         <div style={{ maxWidth: '600px', margin: '0 auto', marginLeft: '0' }}>
-            <h2 style={{ marginTop: '-20px'}}>ADMIN BASEMENT</h2>
+            <h2 style={{ marginTop: '-20px',marginBottom: '-20px'}}>ADMIN BASEMENT</h2>
 
             <Paper shadow="xs" p="xl">
                 <h3>Add User:</h3>
@@ -109,7 +109,6 @@ const AdminPage: React.FC = () => {
                 </form>
             </Paper>
 
-            <Space h="lg" />
 
             <Paper shadow="xs" p="xl">
                 <h3>Delete user:</h3>
@@ -128,7 +127,6 @@ const AdminPage: React.FC = () => {
                 </form>
             </Paper>
 
-            <Space h="lg" />
 
             <Paper shadow="xs" p="xl">
                 <h3>Add Category:</h3>
@@ -147,7 +145,6 @@ const AdminPage: React.FC = () => {
                 </form>
             </Paper>
 
-            <Space h="lg" />
 
             <Paper shadow="xs" p="xl">
                 <h3>Delete category:</h3>

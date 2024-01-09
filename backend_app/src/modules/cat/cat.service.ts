@@ -27,10 +27,17 @@ export class CatService {
     }
 
     async deleteCategory(id: number) {
+        await this.prisma.categoryOnTodo.deleteMany({
+            where: {
+                categoryId: id
+            }
+        });
+
         return this.prisma.category.delete({
             where: {
                 id: id,
             }
         });
     }
+
 }
