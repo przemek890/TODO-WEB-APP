@@ -67,7 +67,7 @@ export const Calculator = () => {
                 <input type="text" value={result} onChange={e => setResult(e.target.value)} />
             </form>
             <div className="keypad">
-                <button className="btn clear" onClick={clear}>AC</button>
+                <button className="btn clear" name="clear" onClick={clear}>AC</button>
                 <button className="btn operator" name="+/-" onClick={changeSign}>+/-</button>
                 <button className="btn operator" name="%" onClick={calculatePercentage}>%</button>
                 <button className="btn operator" name="/" onClick={handleClick}>/</button>
@@ -85,7 +85,7 @@ export const Calculator = () => {
                 <button className="btn operator" name="+" onClick={handleClick}>+</button>
                 <button className="btn zero" name="0" onClick={handleClick}>0</button>
                 <button className="btn" name="." onClick={handleClick}>.</button>
-                <button className="btn equal" onClick={calculate}>=</button>
+                <button className="btn equal" name="equal" onClick={calculate}>=</button>
             </div>
             <div style={{marginTop: "20px"}} className="history">
                 <h3>Last Result: {history}</h3>
