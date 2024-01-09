@@ -24,6 +24,7 @@ export class TodoController {
   constructor(private todoService: TodoService) {}
 
   @Get()
+  @HttpCode(HttpStatus.OK)
   @UseGuards(TokenGuard)
   listTodo(@Query() filter: TodoFilterDto,@UserID() userid: number) {
     return this.todoService.listTodo(filter,userid);
@@ -31,6 +32,7 @@ export class TodoController {
 
 
   @Get(':id')
+  @HttpCode(HttpStatus.OK)
   @UseGuards(TokenGuard)
   async getTodo(@Param('id', ParseIntPipe) id: number, @UserID() userId: number) {
     const todo = await this.todoService.get(id);
@@ -57,6 +59,7 @@ export class TodoController {
   }
 
   @Put(':id')
+  @HttpCode(HttpStatus.OK)
   @UseGuards(TokenGuard)
   async editTodo(@Param('id', ParseIntPipe) id: number, @Body() data: EditTodoDto,@UserID() userId: number) {
     const todo = await this.todoService.get(id)

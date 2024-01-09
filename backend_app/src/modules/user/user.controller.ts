@@ -24,12 +24,16 @@ export class UserController {
     constructor(private readonly userService: UserService) {}
 
     @Post()
+    @HttpCode(HttpStatus.CREATED)
+    @UseGuards(TokenGuard)
     async create(@Body() createUserDto: CreateUserDto) {
         const user =  await this.userService.create(createUserDto);
         return plainToInstance(UserDto,user);
     }
     @Get('/me')
     @UseGuards(TokenGuard)
+    @HttpCode(HttpStatus.OK)
+
     async me(@UserID() userId: number) {
         const user = await this.userService.findOne(userId);
         return plainToInstance(UserDto,user);

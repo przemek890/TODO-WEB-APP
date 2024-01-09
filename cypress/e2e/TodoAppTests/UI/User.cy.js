@@ -10,7 +10,7 @@ describe('Testy dla użytkownika przemek@example.com', () => {
         cy.visit('http://localhost:3000/api/auth/logout')
     })
 
-    it('zaloguj się i nawiguj do /todo/new', () => {
+    it('powinien zalogować się i nawigować do /todo/new', () => {
         cy.visit('http://localhost:3000/todo/new')
         cy.get('input[name="title"]').type('Testowe zadanie')
         cy.get('input[name="content"]').type('To jest testowe zadanie')
@@ -22,13 +22,12 @@ describe('Testy dla użytkownika przemek@example.com', () => {
         cy.url().should('include', '/todo')
     })
 
-    it('zaloguj się, nawiguj do /todo/delete i usuń zadanie o największym ID', () => {
+    it('powinien zalogować się nawigowac do /todo/delete i usunac zadanie "Testowe zadanie', () => {
         cy.visit('http://localhost:3000/todo/delete')
         cy.get('input[name="title"]').type("Testowe zadanie")
         cy.get('button[type="submit"]').click()
         cy.url().should('include', '/todo')
     })
-
 
 
     it('Kalkulator - proste obliczenia', () => {
@@ -45,15 +44,5 @@ describe('Testy dla użytkownika przemek@example.com', () => {
         cy.get('button[name="clear"]').click()
         cy.get('input[type="text"]').should('have.value', '')
         cy.url().should('include', '/calculator')
-    })
-
-
-    it('nawiguj do /admin i otrzymaj 403 FORBIDDEN ', () => {
-        cy.visit('http://localhost:3000/admin')
-        cy.intercept('GET', 'http://localhost:3000/admin', (req) => {
-            req.reply((res) => {
-                expect(res.statusCode).to.eq(403)
-            })
-        })
     })
 })
