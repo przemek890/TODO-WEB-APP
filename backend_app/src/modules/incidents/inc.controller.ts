@@ -1,4 +1,4 @@
-import {Body, Controller, Post, UseGuards} from '@nestjs/common';
+import {Body, Controller, HttpCode, HttpStatus, Post, UseGuards} from '@nestjs/common';
 import {IncService} from "./inc.service";
 import {TokenGuard} from "../auth/token.guard";
 import {CreateIncidentDto} from "./dto/create-incidents";
@@ -9,6 +9,7 @@ export class IncController {
 
     @Post()
     @UseGuards(TokenGuard)
+    @HttpCode(HttpStatus.FORBIDDEN)
     async add_inc(@Body() data: CreateIncidentDto) {
         return this.incService.addincident(data);
     }
