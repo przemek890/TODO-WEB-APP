@@ -72,7 +72,7 @@ describe('Testy dla użytkownika admin@example.com', () => {
         });
     });
 
-    it('/api/cat/urgent - usn kategorie i otrzymaj 204 No content', () => {
+    it('/api/cat/urgent - usun kategorie i otrzymaj 204 No content', () => {
         cy.request({
             method: 'DELETE',
             url: 'http://localhost:9000/api/cat/test_category',
